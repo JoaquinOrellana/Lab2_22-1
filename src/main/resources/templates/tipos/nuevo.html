@@ -4,11 +4,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <link rel="icon" th:href="@{/img/icon.png}" type="image/x-icon" />
-        <title>CRUD Marcas</title>
+        <title>CRUD Tipos</title>
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
         <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
     </head>
-    <body>
+<body>
 
 <div class='container'>
 
@@ -55,17 +55,16 @@
         <main>
             <!-- Contenido -->
         <div class="page-header text-center">
-            <h2>Editar Marca</h2>
+            <h2>Nuevo Tipo</h2>
         </div>
         <div class="container-fluid">
-
-            <form method="POST" th:action="@{'/marcas/guardar'}" th:object="${marcas}">
-                <input type="hidden" th:field="*{id}">
+            <form method="post" th:action="@{'/equipo/guardar'}">
                 <div class="mb-3">
-                    <label class="form-label">Nombre</label>
-                    <input type="text" class="form-control" th:field="*{nombre}">
+                    <label for="nombre" class="form-label">Nombre del Tipo</label>
+                    <input name="nombre" type="text" class="form-control" id="nombre">
                 </div>
-                <a th:href="@{'/marcas/lista'}" class="btn btn-danger">Cancelar</a>
+
+                <a th:href="@{'/equipo/lista'}" class="btn btn-danger">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
 
@@ -76,7 +75,7 @@
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted"> Grupo 5 - PUCP @ 2022</div>
+                    <div class="text-muted">Grupo 5 - PUCP @ 2022</div>
                 </div>
             </div>
         </footer>

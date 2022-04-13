@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <link rel="icon" th:href="@{/img/icon.png}" type="image/x-icon" />
-        <title>CRUD Marcas</title>
+        <title>CRUD Tipos</title>
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
         <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
     </head>
@@ -56,26 +56,26 @@
                 <main>
                     <!-- Contenido -->
                     <div class="page-header text-center">
-                        <h1>Lista de Marcas</h1>
+                        <h1>Lista de Tipos</h1>
                     </div>
                     <div class="container-fluid">
 
-                        <a class="btn btn-primary mt-4 mb-4" th:href="@{/marcas/nuevo}">Nueva Marca</a>
+                        <a class="btn btn-primary mt-4 mb-4" th:href="@{/equipo/nuevo}">Nuevo Tipo</a>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nombre de la Marca</th>
+                                    <th>Nombre del Tipo<th>
                                     <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="marcas,i:${marcasList}">
+                                <tr th:each="tipos,i:${tiposList}">
                                     <td th:text="${i.index + 1}"></td>
-                                    <td th:text="${marcas.nombre}"></td>
-                                    <td><a class="btn btn-primary" th:href="@{'/marcas/editar?id=' + ${marcas.id}}">Editar</a></td>
-                                    <td><a class="btn btn-danger" th:href="@{'/marcas/borrar?id=' + ${marcas.id}}">Borrar</a></td>
+                                    <td th:text="${tipos.nombre}"></td>
+                                    <td><a class="btn btn-primary" th:href="@{'/equipo/editar?id=' + ${tipos.id}}">Editar</a></td>
+                                    <td><a class="btn btn-danger" th:href="@{'/equipo/borrar?id=' + ${tipos.id}}">Borrar</a></td>
                                 </tr>
                             </tbody>
                         </table>
