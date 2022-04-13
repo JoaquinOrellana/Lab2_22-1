@@ -12,14 +12,14 @@ import javax.persistence.Table;
 public class Trabajadores {
 
     @Id
+    @Column(name="dni")
+    private String dni;
     @Column(name="nombres")
     private String nombres;
     @Column(name="apellidos")
     private String apellidos;
     @Column(name="correo")
     private String correo;
-    @Column(name="dni")
-    private String dni;
     @Column(name="idsede")
     private Integer idsede;
 
