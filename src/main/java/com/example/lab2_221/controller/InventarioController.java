@@ -68,6 +68,26 @@ public class InventarioController {
         attributes.addFlashAttribute("msg1", "Inventario editado exitosamente");
         return "redirect:/inventario/lista";
     }
+
+    @GetMapping("/editar")
+    public String editarInventario(Model model,@RequestParam("idinventario") Integer idinventario){
+        Optional<Inventario> optionalInventario = inventarioRepository.findById(idinventario);
+        if(optionalInventario.isPresent()){
+            Inventario inventario = optionalInventario.get();
+            model.addAttribute("inventario",inventario);
+            List<Sedes> sedesList = sedesRepository.findAll();
+            model.addAttribute("sedesList",sedesList);
+            List<Marcas> marcasList = marcasRepository.findAll();
+            model.addAttribute("marcasList",marcasList);
+            List<Tipos> tiposList = tiposRepository.findAll();
+            model.addAttribute("tiposList",tiposList);
+            return "inventario/editform";
+        }
+        else{
+            return "redirect:/inventario/lista";
+        }
+    }
+
     @GetMapping("/borrar")
     public String borrar(@RequestParam("idinventario") int idinventario, RedirectAttributes attributes){
         Optional<Inventario> optionalInventario = inventarioRepository.findById(idinventario);
