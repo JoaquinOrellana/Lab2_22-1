@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Sede</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+                <a class="navbar-brand" th:href="@{/}">
+                    <img th:src="@{/img/img.png}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                    Bicicentro
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-app" aria-controls="navbar-app" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbar-app">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/inventarios/lista}">Inventario</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/marcas/lista}"> Marcas</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/equipo/lista}"> Tipos de Equipo</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/sedes/lista}"> Sedes</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/trabajadores/lista}"> Trabajadores</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <h1 class="pb-2 mb-4 border-bottom">Editar Sede</h1>
+        <form method="post" th:action="@{'/sedes/save'}" class="col-4" th:object="${sedes}">
+            <input type="hidden" th:field="*{idsede}"/>
+            <div class="mb-3">
+                <label class="form-label">Nombre de la Sede </label>
+                <input type="text" class="form-control" th:field="*{nombresede}" >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Direccion de la sede </label>
+                <input type="text" class="form-control" th:field="*{direccion}" >
+            </div>
+            <a th:href="@{'/sedes/lista'}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+        <br>
+        <h4 class="pb-2 mb-4 border-bottom">Lista de Trabajadores de la Sede</h4>
+        <table class="table table-sm">
+            <tr>
+                <th>#</th>
+                <th>DNI del Trabajador</th>
+                <th>Correo del Trabajador</th>
+                <th>Nombre del Trabajador</th>
+                <th>Apellidos del Trabajador</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="trabajadores,i : ${listaTrabajadoresporSede}">
+                <td th:text="${i.index + 1}"></td>
+                <td th:text="${trabajadores.dni}"></td>
+                <td th:text="${trabajadores.correo}"></td>S
+                <td th:text="${trabajadores.nombres}"></td>
+                <td th:text="${trabajadores.apellidos}"></td>
+            </tr>
+        </table>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>l>

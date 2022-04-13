@@ -1,41 +1,34 @@
 package com.example.lab2_221.entity;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "trabajadores")
+@Table(name="trabajadores")
+
 public class Trabajadores {
+
     @Id
-    @Column(name = "dni", nullable = false, length = 45)
-    private String dni;
-
-    @Column(name = "nombres", length = 45)
+    @Column(name="nombres")
     private String nombres;
-
-    @Column(name = "apellidos", length = 45)
+    @Column(name="apellidos")
     private String apellidos;
-
-    @Column(name = "correo", length = 45)
+    @Column(name="correo")
     private String correo;
+    @Column(name="dni")
+    private String dni;
+    @Column(name="idsede")
+    private Integer idsede;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idsede", nullable = false)
-    private Sede idsede;
-
-    public Sede getIdsede() {
-        return idsede;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setIdsede(Sede idsede) {
-        this.idsede = idsede;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     public String getApellidos() {
@@ -46,19 +39,31 @@ public class Trabajadores {
         this.apellidos = apellidos;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getId() {
+    public String getDni() {
         return dni;
     }
 
-    public void setId(String dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
+
+    public Integer getIdsede() {
+        return idsede;
+    }
+
+    public void setIdsede(Integer idsede) {
+        this.idsede = idsede;
+    }
+
+
+
+
 }
