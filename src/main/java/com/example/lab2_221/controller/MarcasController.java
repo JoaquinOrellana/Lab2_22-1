@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,16 +47,25 @@ public class MarcasController {
     }
 
     @PostMapping("/guardar")
-    public String guardarMarca(Marcas marcas){
+    public String guardarMarca(Marcas marcas, RedirectAttributes attributes){
         marcasRepository.save(marcas);
+        attributes.addFlashAttribute("msg", "Marca creada exitosamente");
+        return "redirect:/marcas/lista";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizarMarca(Marcas marcas, RedirectAttributes attributes){
+        marcasRepository.save(marcas);
+        attributes.addFlashAttribute("msg1", "Marca editada exitosamente");
         return "redirect:/marcas/lista";
     }
 
     @GetMapping("/borrar")
-    public String borrarMarca(@RequestParam("id") int id){
+    public String borrarMarca(@RequestParam("id") int id, RedirectAttributes attributes){
         Optional<Marcas> optionalMarcas = marcasRepository.findById(id);
         if (optionalMarcas.isPresent()) {
             marcasRepository.deleteById(id);
+            attributes.addFlashAttribute("msg2", "Marca borrada exitosamente");
         }
         return "redirect:/marcas/lista";
     }

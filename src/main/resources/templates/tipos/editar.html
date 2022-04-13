@@ -59,7 +59,7 @@
         </div>
         <div class="container-fluid">
 
-            <form method="POST" th:action="@{'/equipo/guardar'}" th:object="${tipos}">
+            <form method="POST" th:action="@{'/equipo/actualizar'}" th:object="${tipos}">
                 <input type="hidden" th:field="*{id}">
                 <div class="mb-3">
                     <label class="form-label">Nombre del Tipo</label>
