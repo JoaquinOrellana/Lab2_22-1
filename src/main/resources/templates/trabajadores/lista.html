@@ -58,6 +58,9 @@
                         <h1>Lista de Trabajadores</h1>
                     </div>
                     <a class="btn btn-primary mt-4 mb-4" th:href="@{'/trabajadores/new'}">Nuevo Trabajador</a>
+                    <div class="alert alert-success" th:text="${msg}" th:if="${msg != null}"></div>
+                    <div class="alert alert-warning" th:text="${msg1}" th:if="${msg1 != null}"></div>
+                    <div class="alert alert-danger" th:text="${msg2}" th:if="${msg2 != null}"></div>
                     <div class="container-fluid">
 
                         <table class="table table-striped">

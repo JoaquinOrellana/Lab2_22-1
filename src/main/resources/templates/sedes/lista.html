@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,7 +41,10 @@
         </nav>
     </div>
     <h2 class="pb-2 pt-2 border-bottom">Lista de Sedes</h2>
-    <a class="btn btn-primary mt-4 mb-4" th:href="@{/sedes/newform}">Nuevo Proyecto</a>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/sedes/newform}">Nuevo Sede</a>
+    <div class="alert alert-success" th:text="${msg}" th:if="${msg != null}"></div>
+    <div class="alert alert-warning" th:text="${msg1}" th:if="${msg1 != null}"></div>
+    <div class="alert alert-danger" th:text="${msg2}" th:if="${msg2 != null}"></div>
     <table class="table table-sm">
         <tr>
             <th>#</th>

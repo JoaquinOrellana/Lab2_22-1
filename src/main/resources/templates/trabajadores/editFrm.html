@@ -42,7 +42,7 @@
                 <main>
                     <!-- Contenido -->
                     <h2>Nuevo Trabajador</h2><hr />
-                    <form method="post" th:action="@{'/trabajadores/guardar'}">
+                    <form method="post" th:action="@{'/trabajadores/update'}">
                         <input th:value="${trabajador.dni}" name="dni" type="hidden">
                         <div class="form-group">
                             <label for="correo">Correo del trabajador</label>
@@ -60,6 +60,7 @@
                             <label for="sede">Sede</label>
                             <select id="sede" name="idsede" class="form-select form-select-lg mb-3">
                                 <option th:each="sede:${listaProd}"
+                                        th:selected="${sede.idsede eq trabajador.idsede}"
                                         th:value="${sede.idsede}"
                                         th:text="${sede.nombresede}">
                                 </option>

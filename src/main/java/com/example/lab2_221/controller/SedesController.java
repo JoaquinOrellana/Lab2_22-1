@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +44,12 @@ public class SedesController {
     }
 
     @PostMapping("/save")
-    public String savesedes( Sedes sedes){
+    public String savesedes(Sedes sedes, RedirectAttributes attr){
+        if(sedes.getIdsede()== null){
+            attr.addFlashAttribute("msg","Sede creada exitosamente");
+        }else{
+            attr.addFlashAttribute("msg1","Sede actualizada exitosamente");
+        }
         sedesRepository.save(sedes);
         return "redirect:/sedes/lista";
     }
@@ -63,10 +69,11 @@ public class SedesController {
     }
 
     @GetMapping("/borrar")
-    public String borrar(@RequestParam("idsede") int ididsede){
+    public String borrar(@RequestParam("idsede") int ididsede, RedirectAttributes attr){
         Optional<Sedes> optionalSedes = sedesRepository.findById(ididsede);
         if(optionalSedes.isPresent()){
             sedesRepository.deleteById(ididsede);
+            attr.addFlashAttribute("msg2","Sede borrada exitosamente");
         }
         return "redirect:/sedes/lista";
 
