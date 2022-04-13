@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,16 +56,24 @@ public class InventarioController {
     }
 
     @PostMapping("/save")
-    public String saveinventario( Inventario inventario){
+    public String saveinventario( Inventario inventario, RedirectAttributes attributes){
         inventarioRepository.save(inventario);
+        attributes.addFlashAttribute("msg", "Inventario creado exitosamente");
         return "redirect:/inventario/lista";
     }
 
+    @PostMapping("/update")
+    public String updateinventario( Inventario inventario, RedirectAttributes attributes){
+        inventarioRepository.save(inventario);
+        attributes.addFlashAttribute("msg1", "Inventario editado exitosamente");
+        return "redirect:/inventario/lista";
+    }
     @GetMapping("/borrar")
-    public String borrar(@RequestParam("idinventario") int idinventario){
+    public String borrar(@RequestParam("idinventario") int idinventario, RedirectAttributes attributes){
         Optional<Inventario> optionalInventario = inventarioRepository.findById(idinventario);
         if(optionalInventario.isPresent()){
             inventarioRepository.deleteById(idinventario);
+            attributes.addFlashAttribute("msg2", "Inventario borrado exitosamente");
         }
         return "redirect:/inventario/lista";
 

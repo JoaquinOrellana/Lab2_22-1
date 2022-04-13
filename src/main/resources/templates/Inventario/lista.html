@@ -42,6 +42,9 @@
     </div>
     <h2 class="pb-2 pt-2 border-bottom">Lista de Inventario</h2>
     <a class="btn btn-primary mt-4 mb-4" th:href="@{/inventario/newform}">Nuevo Inventario</a>
+    <div class="alert alert-success" th:text="${msg}" th:if="${msg != null}"></div>
+    <div class="alert alert-warning" th:text="${msg1}" th:if="${msg1 != null}"></div>
+    <div class="alert alert-danger" th:text="${msg2}" th:if="${msg2 != null}"></div>
     <table class="table table-sm">
         <tr>
             <th>#</th>
